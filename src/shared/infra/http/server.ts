@@ -1,4 +1,4 @@
-import { CheckService } from '../../../modules/checked/domain/useCases/checkService';
+import { CheckService } from '../../../modules/checked/domain/useCases/check-service.usecase';
 import { CronService } from '../services/CronService'
 class Server {
   public static start() {
