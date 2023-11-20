@@ -12,5 +12,4 @@ uploads/*
 uploads/
 !uploads/.gitkeep
 
-logs/
-logs/*
+/logs/
