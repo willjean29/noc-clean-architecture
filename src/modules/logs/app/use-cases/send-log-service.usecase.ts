@@ -1,15 +1,13 @@
-import * as path from "path";
-import { EmailService } from "../../../../shared/infra/services/email.service";
-import { LogEntity, LogSeverityLevel } from "../entities/log.entity";
-import { LogRepository } from "../repositories/log.repository";
+import * as path from 'path';
+import { SendLogUseCase } from "../../domain/use-cases/send-log.usecase";
+import { LogRepository } from '../../domain/repositories/log.repository';
+import { LogEntity, LogSeverityLevel } from '../../domain/entities/log.entity';
+import { EmailAdapter } from '../../../../shared/adapters/email/email.adapter';
 
-interface SendLogUseCase {
-  execute: (to: string | string[]) => Promise<boolean>
-}
-export class SendLogService implements SendLogUseCase {
+export class SendLogServiceUseCase implements SendLogUseCase {
   private filename = path.basename(__filename);
   constructor(
-    private readonly emailService: EmailService,
+    private readonly emailService: EmailAdapter,
     private readonly logRepository: LogRepository,
   ) { }
   async execute(to: string | string[]) {

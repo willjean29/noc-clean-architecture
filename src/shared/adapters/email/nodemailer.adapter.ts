@@ -1,18 +1,9 @@
 import { createTransport } from 'nodemailer';
+import { EmailAdapter, SendMailOptions, Attachments } from './email.adapter';
 import { envs } from '../../../config/plugins/envs.plugin';
-interface Attachments {
-  filename: string;
-  path: string;
-}
 
-interface SendMailOptions {
-  to: string | string[];
-  subject: string;
-  htmlBdoy: string;
-  attachments?: Attachments[]
-}
 
-export class EmailService {
+export class NodeMailerAdapter implements EmailAdapter {
   private transport = createTransport({
     service: envs.MAILER_SERVICE,
     auth: {
