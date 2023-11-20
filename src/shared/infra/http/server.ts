@@ -10,15 +10,15 @@ class Server {
   public static start() {
     console.log("Server started");
     console.log({ envs });
-    // CronService.createJob('*/2 * * * * *', () => {
-    //   // console.log('2 second', new Date());
-    //   const url = 'https://www.gooddgle.com';
-    //   new CheckService(
-    //     fileSystemLogRepository,
-    //     () => console.log(`Success on check service ${url}`),
-    //     (error) => console.log(error)
-    //   ).execute(url);
-    // });
+    CronService.createJob('*/2 * * * * *', () => {
+      // console.log('2 second', new Date());
+      const url = 'https://www.gooddgle.com';
+      new CheckService(
+        fileSystemLogRepository,
+        () => console.log(`Success on check service ${url}`),
+        (error) => console.log(error)
+      ).execute(url);
+    });
   }
 }
 
