@@ -13,3 +13,6 @@ uploads/
 !uploads/.gitkeep
 
 /logs/
+
+# sonar
+/.scannerwork
