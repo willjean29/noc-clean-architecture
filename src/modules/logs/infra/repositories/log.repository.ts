@@ -10,6 +10,6 @@ export class LogRepository implements ILogRepository {
     return this.logDatasource.saveLog(log);
   }
   async getLogs(severityLevel: LogSeverityLevel): Promise<LogEntity[]> {
-    return this.getLogs(severityLevel);
+    return this.logDatasource.getLogs(severityLevel);
   }
 }

@@ -16,3 +16,6 @@ uploads/
 
 # sonar
 /.scannerwork
+
+# data db
+/data
