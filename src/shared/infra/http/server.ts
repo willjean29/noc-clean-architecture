@@ -12,11 +12,13 @@ import { LogModel, MongoDatabase } from '../../data/mongo';
 import { CheckService } from '../../../modules/checked/app/use-cases/check-service.usecase';
 import { MongoLogDatasource } from '../../../modules/logs/infra/datasource/mongo-log.datasource';
 import { LogSeverityLevel } from '../../../modules/logs/domain/entities/log.entity';
+import { PostgresLogDatasource } from '../../../modules/logs/infra/datasource/postgres-log.datasource';
 const cronService: CronAdapter = new CronJobAdapter();
 const emailService: EmailAdapter = new NodeMailerAdapter();
 const logRepository = new LogRepository(
   // new FileSystemDatasource()
-  new MongoLogDatasource()
+  // new MongoLogDatasource()
+  new PostgresLogDatasource()
 );
 
 // const emailService = new EmailService();
@@ -26,7 +28,7 @@ class Server {
     // const email
     console.log("Server started");
     console.log({ envs });
-    const logs = await logRepository.getLogs(LogSeverityLevel.Low);
+    const logs = await logRepository.getLogs(LogSeverityLevel.High);
     console.log(logs);
     // send email
     // const emailService = new EmailService(fileSystemLogRepository);
